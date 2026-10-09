@@ -10,6 +10,7 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 add_executable(Mills
     main.cpp
     NineMensMorris.h
+        Minimax.h
 )
 
 target_link_libraries(Mills PRIVATE Qt6::Widgets)
