@@ -48,7 +48,7 @@ protected:
             p.setBrush(fill); p.drawEllipse(c, 16, 16);
             const Cell cell = game.cell(i);
             if (cell != Cell::Empty) {
-                p.setBrush(cell == Cell::Player0 ? QColor("#334a42") : QColor("#c86b4a"));
+                p.setBrush(cell == Cell::Player0 ? QColor("#39a852") : QColor("#f28c28"));
                 p.setPen(QPen(QColor("#fffaf0"), 3)); p.drawEllipse(c, 12, 12); p.setPen(Qt::NoPen);
             }
         }
@@ -59,16 +59,16 @@ protected:
         p.setFont(QFont("Arial", 10)); p.setPen(QColor("#7f786e")); p.drawText(panelX, top + 99, "С БОТОМ ИЛИ РЕАЛЬНЫМ СОПЕРНИКОМ");
         p.setPen(QColor("#25332d")); p.setFont(QFont("Arial", 12, QFont::DemiBold));
         QString status;
-        if (game.isGameOver()) status = game.winner() == Player::Player0 ? "Победили зелёные" : "Победили терракотовые";
+        if (game.isGameOver()) status = game.winner() == Player::Player0 ? "Победили зелёные" : "Победили оранжевые";
         else if (botThinking) status = "Бот думает…";
         else if (captureMode) status = "Снимите фишку соперника";
         else if (mode == GameMode::AgainstBot && game.currentPlayer() == Player::Player1) status = "Ход бота";
-        else status = game.currentPlayer() == Player::Player0 ? "Ход зелёных" : "Ход терракотовых";
+        else status = game.currentPlayer() == Player::Player0 ? "Ход зелёных" : "Ход оранжевых";
         p.drawText(panelX, top + 151, status);
         p.setFont(QFont("Arial", 10)); p.setPen(QColor("#7f786e")); p.drawText(panelX, top + 178, modeText() + "  ·  " + phaseText());
-        drawPlayer(p, panelX, top + 229, Player::Player0, "ЗЕЛЁНЫЕ", QColor("#334a42"));
+        drawPlayer(p, panelX, top + 229, Player::Player0, "ЗЕЛЁНЫЕ", QColor("#39a852"));
         drawPlayer(p, panelX, top + 333, Player::Player1,
-                   mode == GameMode::AgainstBot ? "БОТ · ТЕРРАКОТОВЫЕ" : "ТЕРРАКОТОВЫЕ", QColor("#c86b4a"));
+                   mode == GameMode::AgainstBot ? "БОТ · ОРАНЖЕВЫЕ" : "ОРАНЖЕВЫЕ", QColor("#f28c28"));
         p.setPen(QColor("#d3ccc0")); p.drawLine(panelX, top + 405, width() - 42, top + 405);
         p.setPen(QColor("#25332d")); p.setFont(QFont("Arial", 10, QFont::DemiBold)); p.drawText(panelX, top + 432, "РЕЖИМ ИГРЫ");
         drawModeButton(p, panelX, top + 442, 126, "С БОТОМ", mode == GameMode::AgainstBot);
